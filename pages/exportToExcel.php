@@ -246,24 +246,37 @@ $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $fileName_to_save = str_replace(" ","_",$fileName).'.xlsx';
 
 
+//
+//
+//$objWriter->save('../files/'.$fileName_to_save);
+//
+//
+//$pathToFile = dirname(pathinfo(__FILE__)['dirname']).'\\files\\'.$fileName_to_save;
+//
+//if (file_exists($pathToFile) && isset($productName)){
+//    //echo "Click to download <a href = '/raport_v2/files/".$fileName."'>".$fileName."</a>";
+//		$show = "<br/><div class='row'>";
+//        $show .= "<div class='col-xs-12 col-12'>";
+//			$show .= "<a href = '/raport_v2/files/".$fileName_to_save."' class='btn btn-primary'><i class='fa fa-download' aria-hidden='true'></i>  Download <b>".$fileName_to_save."</b></a>";
+//		$show .= "</div>";
+//	$show .= "</div><br/>";
+//	echo $show;
+//}else{
+//    echo "Ups.. something went wrong and file wasn't created. Contact Robert.";    
+//}
 
 
 $objWriter->save('../files/'.$fileName_to_save);
 
 
+$directory = explode("\\",dirname(dirname(__FILE__)));
+
 $pathToFile = dirname(pathinfo(__FILE__)['dirname']).'\\files\\'.$fileName_to_save;
 
-if (file_exists($pathToFile) && isset($productName)){
-    //echo "Click to download <a href = '/raport_v2/files/".$fileName."'>".$fileName."</a>";
-		$show = "<br/><div class='row'>";
-        $show .= "<div class='col-xs-12 col-12'>";
-			$show .= "<a href = '/raport_v2/files/".$fileName_to_save."' class='btn btn-primary'><i class='fa fa-download' aria-hidden='true'></i>  Download <b>".$fileName_to_save."</b></a>";
-		$show .= "</div>";
-	$show .= "</div><br/>";
-	echo $show;
+if (file_exists($pathToFile)){
+    echo "Click to download <a href = '/".$directory[count($directory)-1]."/files/".$fileName_to_save."'>".$fileName_to_save."</a>";    
 }else{
     echo "Ups.. something went wrong and file wasn't created. Contact Robert.";    
 }
-
 
 ?>
