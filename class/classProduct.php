@@ -6,10 +6,17 @@ class product extends PDOException{
     private $pdo=null;
     private $petcoPDO = null;
     private $isDiscontinued = " Discontinued = '0' ";
+    private $dates = array();
     
     
     private function showDate(){
         return date("Y-m-d",mktime(0, 0, 0, date("m"), date("d")-90,   date("Y")));
+    }
+    
+    public function setDateRange($dateFrom,$dateTo){
+        $this->dates = array('dateFrom' => $dateFrom.' 00:00:01',
+                             'dateTo' => $dateTo.' 23:59:01');
+       
     }
     
     //creating connection string to petco to getallheaders product list
@@ -37,21 +44,7 @@ class product extends PDOException{
             }
     }
     
-    //private function getMasterDbString(){
-    //    //$dbClass = new dbConnection();
-    //    //$this->petcoConnectionString = $dbClass->getDbConnection(2);
-    //    
-    //    try{
-    //        $this->petcoPDO  = new PDO("sqlsrv:Server=86.47.51.83,1317;Database=petshoptest","sa","SMITH09ALPHA"); // charlestown db test
-    //        //$this->petcoPDO = new PDO($this->petcoConnectionString["server"],$this->petcoConnectionString["user"],$this->petcoConnectionString["password"]);
-    //    }catch(Exception $e){
-    //        $this->petcoPDO  = new PDO("sqlsrv:Server=Server=192.168.1.2\SQLEXPRESS;Database=petshoptest","sa","SMITH09ALPHA");
-    //        //$this->petcoPDO = new PDO($this->petcoConnectionString["localServer"],$this->petcoConnectionString["user"],$this->petcoConnectionString["password"]);
-    //    }
-    //    //$this->petcoPDO = $tempPdo;
-    //   // $dbClass = null;
-    //}
-    
+   
     /*
      *
      *Gettind list of all supplier name's and add it to select list
@@ -116,9 +109,10 @@ class product extends PDOException{
                 FROM Stock
                 	inner join [Orders] on [Name of Item] = [NameOfItem]
                 	inner join [Days] on [Order Number] = OrderNo
-				WHERE [Date] > '".$this->showDate()."'
+				WHERE ([Date] > '".$this->dates['dateFrom']."' AND [Date] < '".$this->dates['dateTo']."')
                     AND ".$where.$this->isDiscontinued.
                     "group by [Selling Price],Quantity,[Name of Item] order by Stock.[Name of Item] ASC;";
+    
     
         $query = $this->pdo->prepare($sql);
         $query->execute();

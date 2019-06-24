@@ -8,16 +8,21 @@
     ini_set('max_input_vars', 9000);
     
     $sup_name = $_POST['supplierName'];  //getting supplier name from select
+    
     $supplierName = str_replace("[space]"," ",$sup_name);
     echo "<input type='hidden' id='supName' value='".$sup_name."'>";
-    //s$storeOrAway = $_POST['storeOrAway'];
+    
     $isDiscontinued = $_POST['isDiscontinued'];
+    echo 'From: '.$_POST['dateFrom'].'  -  '.'To: '.$_POST['dateTo'];
     
     $xml = new xmlFile($_SERVER["DOCUMENT_ROOT"].'/dbXML.xml');
     $db = new dbConnection($xml->getConnectionArray());
     
     $product = new product($db->getDbConnection(2));
-    echo $product->getDate().'<br/>';
+    
+    //echo $product->getDate().'<br/>';
+   $product -> setDateRange($_POST['dateFrom'],$_POST['dateTo']);
+    
     $allProductsFromSupp = $product->allProdFromSupplier($supplierName,$isDiscontinued);
     
     

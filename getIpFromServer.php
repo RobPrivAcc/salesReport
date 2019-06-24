@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
     $array = json_decode($_GET['ipArray'], TRUE);
 
 if(isset($array)){
-    $xml = new xmlFile('dbXML.xml');
+    $xml = new xmlFile($_SERVER["DOCUMENT_ROOT"].'/dbXML.xml');
 
     foreach($array as $key=>$value){
        var_dump($array);
