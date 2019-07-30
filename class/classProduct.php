@@ -83,14 +83,14 @@ class product extends PDOException{
             }
         
         
-            $sql = "SELECT [Name of Item], [Selling Price], [InternalRefCode], [CodeSup] FROM [Stock] WHERE ".$where.$this->isDiscontinued." ORDER BY [Name of Item] ASC";
+            $sql = "SELECT [Name of Item], [Selling Price], [InternalRefCode], [CodeSup], [Manufacturer] FROM [Stock] WHERE ".$where.$this->isDiscontinued." ORDER BY [Name of Item] ASC";
             //echo $sql;
             $query = $this->petcoPDO->prepare($sql);
             $query->execute();
             
             $prodFromSupArray = array();    
             while($row = $query->fetch()){
-              $prodFromSupArray[] = array('name' => $row['Name of Item'],'salePrice' => round($row['Selling Price'],2),'supCode' => $row['CodeSup'],'intCode' => $row['InternalRefCode']);
+              $prodFromSupArray[] = array('name' => $row['Name of Item'],'salePrice' => round($row['Selling Price'],2),'supCode' => $row['CodeSup'],'intCode' => $row['InternalRefCode'], 'manufacturer' => $row['Manufacturer']);
             }
             
     return $prodFromSupArray;

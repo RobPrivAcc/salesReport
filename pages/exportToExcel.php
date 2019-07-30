@@ -37,7 +37,7 @@ $shops = $shop->getShopsName();
     $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A2', 'Product Name')
 			->setCellValue('B2', 'Supplier Code')
-			->setCellValue('C2', 'Internal Code')
+			->setCellValue('C2', 'Manufacturer')
 			->mergeCells('D1:E1')->setCellValue('D1', $shops[0][0]."\n(".$shops[0][1].")")->setCellValue('D2', 'Sold')->setCellValue('E2', 'Stock')
 			->mergeCells('G1:H1')->setCellValue('G1', $shops[1][0]."\n(".$shops[1][1].")")->setCellValue('G2', 'Sold')->setCellValue('H2', 'Stock')
 			->mergeCells('J1:K1')->setCellValue('J1', $shops[2][0]."\n(".$shops[2][1].")")->setCellValue('J2', 'Sold')->setCellValue('K2', 'Stock')
@@ -91,7 +91,7 @@ for ($i = 0; $i < count($productName); $i++){
     
     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$cellNo, $productName[$i]["name"]);
 	$objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$cellNo, $productName[$i]["supCode"]);
-	$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$cellNo, $productName[$i]["intCode"]);
+	$objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$cellNo, $productName[$i]["manufacturer"]);
     
     $totalSold = 0;
 	$totalSoldQty = 0;

@@ -58,6 +58,7 @@
         
         $productName = $allProductsFromSupp[$i]["name"];
         $productSalePrice = $allProductsFromSupp[$i]["salePrice"];
+        $manufacturer = $allProductsFromSupp[$i]["manufacturer"];
         
 
         foreach($productsArray as $key=>$value){
@@ -79,7 +80,7 @@
           
         }
 
-    $allProdArray[] = array('name' => $productName, 'supCode' => $allProductsFromSupp[$i]["supCode"], 'intCode' => $allProductsFromSupp[$i]["intCode"],'salePrice' => $productSalePrice,'shop' => $saleDetailArray);
+    $allProdArray[] = array('name' => $productName, 'manufacturer' => $manufacturer, 'supCode' => $allProductsFromSupp[$i]["supCode"], 'intCode' => $allProductsFromSupp[$i]["intCode"],'salePrice' => $productSalePrice,'shop' => $saleDetailArray);
     }
    
     $table = "<table>";
@@ -89,6 +90,7 @@
     
     $head .="<tr>";
     $head .="<th>Name</th>";
+    $head .="<th>Manufacturer</th>";
 
       //Getting shop name and number from array
      
@@ -105,7 +107,11 @@
         $prod .= "<td>";
             $prod .= $allProdArray[$i]["name"];
         $prod .= "</td>";
-
+        
+        $prod .= "<td>";
+            $prod .= $allProdArray[$i]["manufacturer"];
+        $prod .= "</td>";
+        
         $totalSold = 0;
         
         for($j=0; $j < $db->getMaxIndex(); $j++){

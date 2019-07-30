@@ -63,7 +63,7 @@
 				<div class='col-xs-8 col-8'>
 					<div id='dateDiv'>
 						<div class= 'row'>
-							<div class='col-xs-4 col-4 dateInputs'>
+							<div class='col-xs-4 col-4 dateInputs '>
 								Date from: <input type="text" class="form-control form-control-sm" name="dateFrom" id="dateFrom" value="" />
 							</div>
 							
