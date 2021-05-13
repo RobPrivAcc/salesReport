@@ -112,8 +112,8 @@ class product extends PDOException{
 				WHERE ([Date] > '".$this->dates['dateFrom']."' AND [Date] < '".$this->dates['dateTo']."')
                     AND ".$where.$this->isDiscontinued.
                     "group by [Selling Price],Quantity,[Name of Item] order by Stock.[Name of Item] ASC;";
-    
-    
+
+
         $query = $this->pdo->prepare($sql);
         $query->execute();
         

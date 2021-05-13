@@ -29,10 +29,6 @@
         </div>
       <div class="row">
         <div class='col-xs-2 col-2'>
-<!--          <div class="radio">
-            <label><input type="radio" name = "isDiscontinued" aria-label="..." value="0" checked="checked"/>Regular stock &nbsp;&nbsp;</label>
-            <label><input type="radio" name = "isDiscontinued" aria-label="..." value="1"/>Discontinued stock &nbsp;&nbsp;</label>
-          </div>-->
 
 					<!-- Rounded switch -->
 					<div id='divIsDiscontinued'>
@@ -45,12 +41,7 @@
 					
         </div>
 				<div class='col-xs-2 col-2'>
-					<!-- Rectangular switch -->
-					<!--<label class="switch">
-						<input type="checkbox">
-						<span class="slider"></span>
-					</label>-->
-					
+
 					<!-- Rounded switch -->
 					<div id='divDateRangeId'>
 						Last 90 days
@@ -158,17 +149,17 @@
         console.log( "ready!" );
 				$('#dateDiv').hide();
         $('#search').tooltip({title: "Generate stats.", trigger: "hover"});
-        $('#exportToExcel').tooltip({title: "Create <b>Excel</b> file.",  html: true, trigger: "hover"}); 
+        $('#exportToExcel').tooltip({title: "Create <b>Excel</b> file.",  html: true, trigger: "hover"});
         $("#exportToExcel").hide();
         $('[data-toggle="tooltip"]').tooltip();
-        
-          $.get( "https://www.robertkocjan.com/petRepublic/ip/ipGetArray.php", function(i) {
-						//console.log(i);
-						var configArray = i;
-          $.get( "getIpFromServer.php", { ipArray: configArray }, function(data) {
-              //console.log(data);
-          });
-        });
+
+        //   $.get( "https://www.robertkocjan.com/petRepublic/ip/ipGetArray.php", function(i) {
+		// 				//console.log(i);
+		// 				var configArray = i;
+        //   $.get( "getIpFromServer.php", { ipArray: configArray }, function(data) {
+        //       //console.log(data);
+        //   });
+        // });
 		  console.log($('#dateFrom').val());
     });
 		dates();

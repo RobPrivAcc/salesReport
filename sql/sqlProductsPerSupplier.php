@@ -40,11 +40,10 @@
     for($i=0; $i < $db->getMaxIndex();$i++){
         
         $product->openConnection($db->getDbConnection($i));
-        
         $productsArray[$db->getShopName()] = ($product->saleDetails($supplierName));
         $qtyArray[$db->getShopName()] = ($product->qtyDetails($supplierName));
     }
-    
+
    //print_r($allProductsFromSupp);
     
     
